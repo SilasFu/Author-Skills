@@ -1,5 +1,9 @@
 # Author-Skills (自研 Agent 技能库)
 
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![Usage: Non-Commercial](https://img.shields.io/badge/Usage-Non--Commercial%20Only-orange.svg)](LICENSE)
+[![Website](https://img.shields.io/badge/Website-aooby.cn-blue.svg)](https://www.aooby.cn/)
+
 个人原创与深度定制的 AI Agent 技能（Skills）源头仓库。所有技能遵循 [writing-for-agents](https://github.com/SilasFu/Author-Skills) 规范编写，支持通过 skills-manager 一键安装分发至 Antigravity、Codex、Claude Code 等多 Agent 运行环境。
 
 > 🌐 **技能深度介绍与图文实战**：每个 Skill 的完整设计理念、原理拆解与实战案例，请移步个人网站查看：[https://www.aooby.cn/](https://www.aooby.cn/)
@@ -39,3 +43,13 @@ flowchart TD
 2. **界限明确 (Completion Criteria)**：每个 SOP 必须具备可检验的完成度（Checkable Bounds），防止模糊交工。
 3. **正向引导 (Anti-Negation)**：优先使用目标正向表述，避免单纯否定句式。
 4. **编码规范**：所有文件统一使用 UTF-8 without BOM。
+
+---
+
+## 📄 开源许可证与使用协议 (License)
+
+本项目采用 **[CC BY-NC-SA 4.0 (知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议)](LICENSE)** 开源授权。
+
+- ✅ **个人与学习免费**：允许自由阅读、研究、修改并用于个人日常开发与非营利性场景。
+- ❌ **严禁商业用途**：未经作者书面授权，**严禁**将本库内的任何 Skill 源代码、设计规范用于商业牟利（包括但不限于付费打包售卖、嵌入商业付费 SaaS/产品、作为付费培训课程物料等）。
+- 🔄 **保持相同方式共享**：任何基于本项目进行的二次分发或演绎，均必须保留原作者署名（SilasFu/Author-Skills）并以相同协议开源。
