@@ -18,7 +18,7 @@ Universal active guardian and diagnostic engine for engineering quality, design 
 
 | 模式 | 用户典型触发词 | 核心动作 |
 | :--- | :--- | :--- |
-| **init (初始化植入)** | “帮这个项目初始化规范”、“规范化新项目”、“植入质量机制”、“/project-guard init” | 自动检测技术栈，生成项目级 AGENTS.md，优先继承已有设计系统（严禁覆盖已有 Token），固化编译器与防腐门禁。 |
+| **init (初始化植入)** | “帮这个项目初始化规范”、“规范化新项目”、“植入质量机制”、“/project-guard init” | 自动检测技术栈，生成项目级 AGENTS.md，优先复用与继承已有设计系统（严禁覆盖或重复创建），固化编译器与防腐门禁。 |
 | **doctor (体检与修复)** | “跑一下项目诊断”、“检查代码行数与规范”、“界面写丑了帮我体检”、“/project-guard doctor” | 扫描 >200 行超长文件、扫描硬编码野样式、运行编译器自检并给出/执行垂直切片重构方案。 |
 | **evolve (规则纠偏进化)** | “以后不要这样做了”、“记住这个设计偏好”、“把这个教训沉淀进规则”、“/project-guard evolve” | 提取用户的负向偏好或架构教训，永久追加写入 AGENTS.md 或 DESIGN.md，实现同一错误永久免疫。 |
 
@@ -40,17 +40,17 @@ Universal active guardian and diagnostic engine for engineering quality, design 
 - **歧义与线框先行**：需求模糊或涉及新界面时，禁止直接写代码，强制先输出 ASCII 线框图或弹出单选题。
 - **1 秒回退支持**：界面不满意时支持 git restore . 瞬间无损恢复。
 
-### 3. 探测与补齐前端设计契约（若存在前端）
-- **优先继承原则（Preserve Existing Tokens First）**：
-  - 初始化时，**必须首先探测**项目中是否已存在设计系统文档（如 `DESIGN.md`、`docs/DESIGN.md`、`docs/design/DESIGN.md` 或已有的 Tailwind / CSS Token）。
-  - **若已存在设计系统**：**严禁全量覆盖或篡改原有的色板 Token、字体与设计哲学！** 必须保持项目原有设计资产的绝对权威，仅做“增量补齐”（检查并增补去卡片化原则、信息密度要求、负向设计禁忌章节），并将 `AGENTS.md` 中的设计指针正确关联至该已有文件。
-  - **若完全不存在设计文件**：才在 `docs/design/DESIGN.md` 中生成基准设计契约模板，固化中性灰阶基调、去卡片化与出版级排版规则。
+### 3. 探测与绑定前端设计契约（单一事实源 SSOT）
+- **优先继承与单一事实源原则**：
+  - 初始化时，**必须首先探测**项目中是否已存在设计系统文档（优先级：`docs/DESIGN.md` ➔ `DESIGN.md` ➔ 已有 Tailwind / CSS Token 规范）。
+  - **若已存在设计文件**：**严禁覆盖已有 Token，严禁在其他子目录下生成重复的第二份文件！** 保持该文件为全项目唯一事实源（SSOT），仅做“增量门禁补齐”（去卡片化原则、负向设计禁忌），并将 `AGENTS.md` 中的设计指针精准绑定至该已有路径。
+  - **若完全不存在设计文件**：才在 `docs/DESIGN.md` 中生成标准设计契约模板，固化中性灰阶基调、去卡片化与出版级排版规则。
 
 ### 4. 验证与交付
 - 运行一次类型检查或编译命令，确认当前项目无语法报错。
-- 输出初始化报告，向用户展示生成的 AGENTS.md 与 DESIGN.md 路径。
+- 输出初始化报告，向用户展示生成的 AGENTS.md 与单一 DESIGN.md 路径。
 
-**完成标准**：根目录存在 AGENTS.md，设计契约（已继承原有或新就绪）就绪，编译器自检命令验证通过。
+**完成标准**：根目录存在 AGENTS.md，全项目存在且仅存在 1 份设计契约（无重复副本），编译器自检命令验证通过。
 
 ---
 
@@ -95,7 +95,7 @@ Universal active guardian and diagnostic engine for engineering quality, design 
 - 例如：*“表单组件一律采用独立抽屉面板（Drawer），严禁直接内嵌在窄侧边栏中。”*
 
 ### 2. 永久写入项目治理文档
-- 若属于设计偏好 ➔ 追加至 docs/design/DESIGN.md 的 ## 负向设计禁忌 章节；
+- 若属于设计偏好 ➔ 追加至 DESIGN.md 的 ## 负向设计禁忌 章节；
 - 若属于工程/代码偏好 ➔ 追加至 AGENTS.md 的 ## 质量与架构禁忌 章节。
 
 ### 3. Git 固化提交
