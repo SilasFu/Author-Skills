@@ -1,4 +1,4 @@
-﻿# Author-Skills 协作规则 (AGENTS.md)
+# Author-Skills 协作规则 (AGENTS.md)
 
 ## 1. 仓库职责
 
@@ -24,4 +24,5 @@
 1. 本地完成 Skill 编写或优化；
 2. 运行 Git 提交；
 3. 推送到远程 GitHub 仓库；
-4. 打开 `skills-manager` 进行版本刷新与多 Agent 场景分发。
+4. 打开 `skills-manager` 进行版本刷新与多 Agent 场景分发；
+5. 在个人网站（[https://www.aooby.cn/](https://www.aooby.cn/)）同步更新对应 Skill 的深度图文介绍与案例。

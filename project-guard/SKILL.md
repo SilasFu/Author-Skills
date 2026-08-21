@@ -1,4 +1,4 @@
-﻿---
+---
 name: project-guard
 description: >-
   Universal project lifecycle guardian and doctor across all AI agents.
@@ -29,14 +29,13 @@ Universal active guardian and diagnostic engine for engineering quality, design 
 当用户在任意新项目或刚用第三方工具初始化的项目中触发 init 时，执行以下步骤：
 
 ### 1. 技术栈与环境自动探测
-- 检测包管理器：pnpm-lock.yaml ➔ pnpm, package-lock.json ➔ 
-pm, yarn.lock ➔ yarn, Cargo.toml ➔ cargo, pyproject.toml ➔ poetry/uv/pip.
+- 检测包管理器：pnpm-lock.yaml ➔ pnpm, package-lock.json ➔ npm, yarn.lock ➔ yarn, Cargo.toml ➔ cargo, pyproject.toml ➔ poetry/uv/pip。
 - 检测前端框架与 UI 库：React, Next.js, Vue, Tailwind, shadcn/ui, Radix 等。
-- 检测编译/类型检查脚本：	ypecheck / 	est / lint。
+- 检测编译/类型检查脚本：typecheck / test / lint。
 
 ### 2. 自动生成/补齐项目级 AGENTS.md
 在项目根目录生成（或增补）专属于该项目的 AGENTS.md，必须包含：
-- **单文件行数限制**：组件单文件不超过 200 行，必须拆分 Component.tsx、useComponent.ts 与 	ypes.ts。
+- **单文件行数限制**：组件单文件不超过 200 行，必须拆分 Component.tsx、useComponent.ts 与 types.ts。
 - **编译器硬门禁**：写完代码必须自动运行项目原生编译命令（如 pnpm typecheck / cargo check），0 报错才准交工。
 - **歧义与线框先行**：需求模糊或涉及新界面时，禁止直接写代码，强制先输出 ASCII 线框图或弹出单选题。
 - **1 秒回退支持**：界面不满意时支持 git restore . 瞬间无损恢复。
@@ -60,21 +59,20 @@ pm, yarn.lock ➔ yarn, Cargo.toml ➔ cargo, pyproject.toml ➔ poetry/uv/pip.
 当项目在迭代过程中出现“代码变乱、界面失控、性能变差”时，用户触发 doctor 执行以下体检：
 
 ### 1. 架构与文件行数体检（Modularity Audit）
-- 扫描项目所有源码文件（排除 
-ode_modules, dist, .git）。
+- 扫描项目所有源码文件（排除 node_modules, dist, .git）。
 - 找出所有超过 **200 行** 的巨石组件/模块。
 - **自动修复动作**：按“视图（UI）、状态（Hook）、数据契约（Types）”三层架构，提出拆分方案并自动重构为独立小文件。
 
 ### 2. 设计规范漂移体检（Design Drift Audit）
 - 扫描组件中的硬编码颜色值（如手写的十六进制色 #8B5CF6、野样式内联 style）。
-- **自动修复动作**：将其批量替换回 DESIGN.md 中定义的语义 Token 类（如 g-surface, 	ext-muted-foreground）。
+- **自动修复动作**：将其批量替换回 DESIGN.md 中定义的语义 Token 类（如 bg-surface, text-muted-foreground）。
 
 ### 3. 编译器与潜在 Regression 巡检（Zero-Error Check）
 - 执行项目原生编译与测试命令（如 pnpm typecheck / pnpm test）。
 - 若有报错，自动捕获编译器输出并循环修复，直至 0 报错。
 
 ### 4. 输出健康卡片（Health Card）
-`	ext
+```text
 ┌──────────────────────────────────────────────────────────┐
 │  PageNest Project Doctor Report                          │
 ├──────────────────────────────┬───────────────────────────┤
@@ -82,7 +80,7 @@ ode_modules, dist, .git）。
 │ • 设计 Token 遵从度          │ 100% 吻合 (已纠正 3 处野样式)  │
 │ • 编译器与类型检查           │ 0 Errors (PASS)           │
 └──────────────────────────────┴───────────────────────────┘
-`
+```
 
 **完成标准**：完成 3 大体检，自动修复落地，编译器命令退出码为 0，向用户呈现健康卡片。
 

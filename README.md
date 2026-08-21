@@ -2,6 +2,8 @@
 
 个人原创与深度定制的 AI Agent 技能（Skills）源头仓库。所有技能遵循 [writing-for-agents](https://github.com/SilasFu/Author-Skills) 规范编写，支持通过 skills-manager 一键安装分发至 Antigravity、Codex、Claude Code 等多 Agent 运行环境。
 
+> 🌐 **技能深度介绍与图文实战**：每个 Skill 的完整设计理念、原理拆解与实战案例，请移步个人网站查看：[https://www.aooby.cn/](https://www.aooby.cn/)
+
 ---
 
 ## 🏛️ 仓库定位与流通链路
@@ -11,20 +13,22 @@ flowchart TD
     A["<b>1. 本地源头仓库</b> (<code>D:\Vibe_Coding\Author-Skills</code>)<br/>• 手工编写、规范校验、测试 Skill 源代码"]
     B["<b>2. GitHub 远程仓库</b> (<code>SilasFu/Author-Skills</code>)"]
     C["<b>3. skills-manager 本地仓库</b> (<code>~/.skills-manager</code>)<br/>• 场景打包 (PM-Design, UI-Design, CD-Systems 等)<br/>• 一键分发至 Agent (Antigravity, Codex, Claude Code)"]
+    D["🌐 <b>个人主页 / 博客</b> (<code>www.aooby.cn</code>)<br/>• Skill 深度图文介绍、场景实战与案例演示"]
 
     A -->|git push| B
     B -->|skills-manager 索引与安装| C
+    B -.->|发布与解析展示| D
 ```
 
 ---
 
 ## 📦 技能清单 (Skill Inventory)
 
-| 技能名称 | 核心职责 | 适用场景与触发方式 |
-| :--- | :--- | :--- |
-| **project-guard** | **项目生命周期护航与诊断修复** | **主动触发**：(1) 新项目初始化 init 注入规范；(2) 遇到代码混乱/界面写丑时 doctor 自动体检重构；(3) 遇到问题时 evolve 自动沉淀新规永久免疫。 |
-| **workspace-lifecycle-governance** | **多工作区生命周期治理** | 多工作区拓扑路由、知识缺口感知登记、新建项目 vs 现有项目扩展 4 门禁判定与连续性同步。 |
-| **my-memories** | **权威记忆库查询接口** | 权威稳定知识库（D:\MY_Memories）的画像、工作偏好、协作边界、产品架构与治理规范查询接口。 |
+| 技能名称 | 核心职责 | 适用场景与触发方式 | 详细介绍 |
+| :--- | :--- | :--- | :--- |
+| **project-guard** | **项目生命周期护航与诊断修复** | **主动触发**：(1) 新项目初始化 init 注入规范；(2) 遇到代码混乱/界面写丑时 doctor 自动体检重构；(3) 遇到问题时 evolve 自动沉淀新规永久免疫。 | [图文解析 ↗](https://www.aooby.cn/) |
+| **workspace-lifecycle-governance** | **多工作区生命周期治理** | 多工作区拓扑路由、知识缺口感知登记、新建项目 vs 现有项目扩展 4 门禁判定与连续性同步。 | [图文解析 ↗](https://www.aooby.cn/) |
+| **my-memories** | **权威记忆库查询接口** | 权威稳定知识库（D:\MY_Memories）的画像、工作偏好、协作边界、产品架构与治理规范查询接口。 | [图文解析 ↗](https://www.aooby.cn/) |
 
 ---
 
