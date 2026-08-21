@@ -1,4 +1,4 @@
-﻿# Author-Skills (自研 Agent 技能库)
+# Author-Skills (自研 Agent 技能库)
 
 个人原创与深度定制的 AI Agent 技能（Skills）源头仓库。所有技能遵循 [writing-for-agents](https://github.com/SilasFu/Author-Skills) 规范编写，支持通过 skills-manager 一键安装分发至 Antigravity、Codex、Claude Code 等多 Agent 运行环境。
 
@@ -6,24 +6,15 @@
 
 ## 🏛️ 仓库定位与流通链路
 
-`	ext
-┌──────────────────────────────────────────────────────────┐
-│ 1. 本地源头仓库 (D:\Vibe_Coding\Author-Skills)            │
-│    • 手工编写、规范校验、测试 Skill 源代码                 │
-└──────────────────────────┬───────────────────────────────┘
-                           │ git push
-                           ▼
-┌──────────────────────────────────────────────────────────┐
-│ 2. GitHub 远程仓库 (SilasFu/Author-Skills)               │
-└──────────────────────────┬───────────────────────────────┘
-                           │ skills-manager 索引与安装
-                           ▼
-┌──────────────────────────────────────────────────────────┐
-│ 3. skills-manager 本地仓库 (~/.skills-manager)           │
-│    • 场景打包 (PM-Design, UI-Design, CD-Systems 等)      │
-│    • 一键分发至 Agent (Antigravity, Codex, Claude Code)  │
-└──────────────────────────────────────────────────────────┘
-`
+```mermaid
+flowchart TD
+    A["<b>1. 本地源头仓库</b> (<code>D:\Vibe_Coding\Author-Skills</code>)<br/>• 手工编写、规范校验、测试 Skill 源代码"]
+    B["<b>2. GitHub 远程仓库</b> (<code>SilasFu/Author-Skills</code>)"]
+    C["<b>3. skills-manager 本地仓库</b> (<code>~/.skills-manager</code>)<br/>• 场景打包 (PM-Design, UI-Design, CD-Systems 等)<br/>• 一键分发至 Agent (Antigravity, Codex, Claude Code)"]
+
+    A -->|git push| B
+    B -->|skills-manager 索引与安装| C
+```
 
 ---
 
