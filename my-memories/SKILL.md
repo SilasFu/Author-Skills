@@ -1,4 +1,4 @@
-﻿---
+---
 name: my-memories
 description: >-
   Query and inspect user profile, preferences, collaboration boundaries, project context, and architecture specs in D:\MY_Memories.

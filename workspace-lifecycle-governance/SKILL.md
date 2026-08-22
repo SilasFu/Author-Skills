@@ -1,4 +1,4 @@
-﻿---
+---
 name: workspace-lifecycle-governance
 description: >-
   Workspace lifecycle governance and decision engine across D:\MY_Memories, D:\My_Learning, D:\Learning_Labs, and D:\Vibe_Coding.
