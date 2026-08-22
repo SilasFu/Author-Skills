@@ -30,4 +30,4 @@
 2. 同步更新 `docs/` 目录文档矩阵；
 3. 规范 Git 提交（遵循 Conventional Commits 规范）；
 4. 推送至远程 GitHub 私有/开源仓库；
-5. 通过 `skills-manager` 或 `npx` 刷新各 Agent 环境。
+5. 规范 Git 提交并推送至 GitHub 远程；本地各 Agent 运行环境的技能分发与更新由用户自行执行，AI 严禁越权修改本地配置目录。
