@@ -105,3 +105,23 @@ Universal execution router for managing state transitions and boundary integrity
 ### 完成标准 (Completion Criterion)
 - 权威正文直接修改完成且无平行冗余文件；
 - `_index.yml` 索引同步完成且 Git Commit 成功。
+
+---
+
+## 5. SOP 4: 项目自包含文档落盘铁律 (Project Self-Containment Rule)
+
+### 触发条件 (Trigger)
+当在任何会话中与用户讨论新项目立项、新功能需求、架构重构或设计契约时：
+
+### 刚性执行门禁
+1. **第一责任落盘点在【项目自身】**：
+   - 产出的需求规格 ➡️ `<ProjectRoot>/docs/PRD.md`
+   - 产出的系统架构 ➡️ `<ProjectRoot>/docs/ARCHITECTURE.md`
+   - 产出的决策记录 ➡️ `<ProjectRoot>/docs/DECISIONS.md`
+   - 产出的设计规范 ➡️ `<ProjectRoot>/DESIGN.md`
+   - 产出的 Agent 守卫 ➡️ `<ProjectRoot>/AGENTS.md`
+2. **严禁记忆库越权代管**：
+   - 全局记忆库（`MY_Memories`）仅在项目立项或里程碑变更时，在 `knowledge/projects/` 中记录一条简要状态与证据入口；
+   - **绝对禁止将具体项目的 PRD、技术方案或 API 细节写入记忆库**。
+3. **完成标准**：
+   - 目标项目自身根目录与 `docs/` 目录完整生成且 Git 提交，单项目拉取即可 100% 独立开发。
