@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "project": {
+    "title": "{{PROJECT_TITLE}}",
+    "content_sources": ["{{CONTENT_SOURCE}}"]
+  },
+  "canvas": {
+    "width": 1440,
+    "height": 1920,
+    "format": "png"
+  },
+  "composition_lock": {
+    "status": "approved",
+    "preset_name": "social_series_tech_blue",
+    "reference_files": [],
+    "default_tolerance_px": 12
+  },
+  "assets": [
+    {
+      "id": "primary-content",
+      "path": "{{CONTENT_SOURCE}}",
+      "role": "content-source",
+      "embed": false
+    },
+    {
+      "id": "avatar",
+      "path": "{{AVATAR_IMAGE}}",
+      "role": "avatar",
+      "embed": true
+    },
+    {
+      "id": "official-qr",
+      "path": "{{QR_CODE_IMAGE}}",
+      "role": "qr-code",
+      "embed": true
+    },
+    {
+      "id": "identity-screenshot",
+      "path": "{{IDENTITY_SCREENSHOT}}",
+      "role": "identity-info",
+      "embed": false
+    },
+    {
+      "id": "watermark-reference",
+      "path": "{{WATERMARK_SAMPLE}}",
+      "role": "watermark-sample",
+      "embed": false
+    }
+  ],
+  "identity": {
+    "display_name": "{{DISPLAY_NAME}}",
+    "avatar_asset_id": "avatar",
+    "qr_code_asset_id": "official-qr"
+  },
+  "requirements": {
+    "require_cover": true,
+    "minimum_body_pages": 1
+  },
+  "pages": [
+    {
+      "id": "00-cover",
+      "kind": "cover",
+      "title": "{{COVER_TITLE}}",
+      "layout_contract": "specs/cover.layout.json",
+      "output_file": "00-cover.png"
+    },
+    {
+      "id": "01-body",
+      "kind": "body",
+      "title": "{{BODY_TITLE}}",
+      "layout_contract": "specs/body.layout.json",
+      "output_file": "01-body.png"
+    }
+  ],
+  "copy": {
+    "target_characters": 100,
+    "tolerance_characters": 30,
+    "output_file": "publish-copy.md"
+  },
+  "render_sources": ["render/source.svg"],
+  "forbidden_text": ["公众号 ·"],
+  "output": {
+    "directory": "final",
+    "expected_images": ["00-cover.png", "01-body.png"]
+  }
+}

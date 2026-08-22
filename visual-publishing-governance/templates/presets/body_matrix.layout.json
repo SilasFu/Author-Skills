@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "preset_id": "body_matrix_1440x1920",
+  "status": "approved",
+  "canvas": {
+    "width": 1440,
+    "height": 1920
+  },
+  "default_tolerance_px": 12,
+  "allow_extra_elements": false,
+  "elements": [
+    {
+      "id": "page-header",
+      "box": [120, 140, 1200, 160]
+    },
+    {
+      "id": "intro-card",
+      "box": [120, 340, 1200, 240]
+    },
+    {
+      "id": "matrix-card-1",
+      "box": [120, 620, 580, 440]
+    },
+    {
+      "id": "matrix-card-2",
+      "box": [740, 620, 580, 440]
+    },
+    {
+      "id": "matrix-card-3",
+      "box": [120, 1100, 580, 440]
+    },
+    {
+      "id": "matrix-card-4",
+      "box": [740, 1100, 580, 440]
+    },
+    {
+      "id": "footer-signature",
+      "box": [120, 1680, 1200, 100]
+    }
+  ]
+}

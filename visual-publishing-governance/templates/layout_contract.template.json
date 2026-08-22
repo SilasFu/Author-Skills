@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "status": "draft",
+  "canvas": {
+    "width": 1440,
+    "height": 1920
+  },
+  "default_tolerance_px": 12,
+  "allow_extra_elements": false,
+  "elements": [
+    {
+      "id": "category-badge",
+      "box": [0, 0, 0, 0]
+    },
+    {
+      "id": "primary-title",
+      "box": [0, 0, 0, 0]
+    },
+    {
+      "id": "hero-illustration",
+      "box": [0, 0, 0, 0]
+    },
+    {
+      "id": "identity-slot",
+      "box": [0, 0, 0, 0]
+    }
+  ]
+}
+

@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "preset_id": "cover_hero_1440x1920",
+  "status": "approved",
+  "canvas": {
+    "width": 1440,
+    "height": 1920
+  },
+  "default_tolerance_px": 12,
+  "allow_extra_elements": false,
+  "elements": [
+    {
+      "id": "category-badge",
+      "box": [120, 140, 320, 64]
+    },
+    {
+      "id": "primary-title",
+      "box": [120, 240, 1200, 180]
+    },
+    {
+      "id": "subtitle",
+      "box": [120, 440, 1200, 100]
+    },
+    {
+      "id": "hero-illustration",
+      "box": [220, 580, 1000, 1000]
+    },
+    {
+      "id": "brand-bar",
+      "box": [120, 1660, 800, 120]
+    },
+    {
+      "id": "avatar-slot",
+      "box": [1200, 1660, 120, 120]
+    }
+  ]
+}

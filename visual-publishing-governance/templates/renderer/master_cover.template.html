@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440, height=1920, initial-scale=1.0">
+  <title>{{PROJECT_TITLE}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #f6f8fc;
+      --ink-primary: #090d16;
+      --ink-secondary: #334155;
+      --ink-tertiary: #64748b;
+      --ink-quaternary: #94a3b8;
+      
+      --theme-accent: #0052ff;
+      --theme-accent-soft: rgba(0, 82, 255, 0.08);
+      --theme-accent-border: rgba(0, 82, 255, 0.2);
+
+      --card-white: #ffffff;
+      --card-border: rgba(226, 232, 240, 0.9);
+      --card-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.02);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 1440px;
+      height: 1920px;
+      background-color: var(--bg-page);
+      background-image: 
+        radial-gradient(ellipse 900px 700px at 85% 55%, rgba(0, 82, 255, 0.1), transparent 70%),
+        radial-gradient(ellipse 700px 500px at 15% 15%, rgba(224, 236, 255, 0.75), transparent 60%),
+        linear-gradient(180deg, #fafcff 0%, #edf2f8 100%);
+      color: var(--ink-primary);
+      font-family: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 84px 96px 72px 96px;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Architectural grid lines */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .canvas-layout {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    /* Header Section */
+    .header-section {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .top-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .category-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--ink-primary);
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .category-capsule .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00f0ff;
+      box-shadow: 0 0 8px #00f0ff;
+    }
+
+    .release-specs {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink-tertiary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-feature-settings: "tnum";
+    }
+
+    .main-title {
+      font-size: 94px;
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.04em;
+      color: var(--ink-primary);
+      margin-top: 6px;
+    }
+
+    .main-title .accent-text {
+      color: var(--theme-accent);
+      display: block;
+      margin-top: 14px;
+    }
+
+    .editorial-lead {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.72;
+      color: var(--ink-secondary);
+      max-width: 1180px;
+      margin-top: 36px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Master Body Grid */
+    .master-body-grid {
+      display: grid;
+      grid-template-columns: 560px 1fr;
+      gap: 48px;
+      align-items: center;
+      flex: 1;
+      margin: 32px 0 36px 0;
+      position: relative;
+    }
+
+    .pillars-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      justify-content: space-between;
+      height: 100%;
+      max-height: 820px;
+      z-index: 2;
+    }
+
+    .pillar-card {
+      background: var(--card-white);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px 36px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card:first-child {
+      border-left: 4px solid var(--theme-accent);
+    }
+
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pillar-tag {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--theme-accent);
+      background: var(--theme-accent-soft);
+      border: 1px solid var(--theme-accent-border);
+      padding: 5px 12px;
+      border-radius: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .pillar-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .pillar-desc {
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--ink-secondary);
+      line-height: 1.55;
+    }
+
+    /* Seamless 3D Hero Integration */
+    .hero-display-area {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .refractive-halo {
+      position: absolute;
+      width: 640px;
+      height: 640px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 82, 255, 0.16) 0%, rgba(0, 240, 255, 0.09) 40%, transparent 70%);
+      filter: blur(40px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .base-optical-pool {
+      position: absolute;
+      bottom: 24px;
+      width: 580px;
+      height: 110px;
+      background: radial-gradient(ellipse at center, rgba(0, 82, 255, 0.28) 0%, rgba(0, 240, 255, 0.14) 35%, rgba(15, 23, 42, 0.06) 60%, transparent 80%);
+      filter: blur(18px);
+      z-index: 1;
+    }
+
+    .artwork-img {
+      position: relative;
+      max-width: 740px;
+      max-height: 800px;
+      object-fit: contain;
+      z-index: 2;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 84%, rgba(0, 0, 0, 0.6) 94%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 84%, rgba(0, 0, 0, 0.6) 94%, transparent 100%);
+      filter: drop-shadow(0 24px 48px rgba(0, 82, 255, 0.14));
+    }
+
+    .light-wrap-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 3;
+      mix-blend-mode: soft-light;
+    }
+
+    /* Footer Section */
+    .footer-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 26px;
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    .author-block {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .avatar-frame {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      padding: 2px;
+      background: #ffffff;
+      border: 1.5px solid var(--theme-accent-border);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .author-name-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .author-name-wrap .name {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .author-name-wrap .verified-badge {
+      width: 20px;
+      height: 20px;
+      background: var(--theme-accent);
+      color: #ffffff;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .author-info .role-desc {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink-tertiary);
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      text-align: right;
+    }
+
+    .brand-block .domain {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--ink-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .brand-block .domain span {
+      color: var(--theme-accent);
+    }
+
+    .brand-block .slogan {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink-quaternary);
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas-layout">
+
+    <!-- Top Section -->
+    <div class="header-section">
+      <nav class="top-meta-row">
+        <div class="category-capsule">
+          <div class="dot"></div>
+          <span>{{CATEGORY_NAME}}</span>
+        </div>
+        <div class="release-specs">{{RELEASE_SPECS}}</div>
+      </nav>
+
+      <header>
+        <h1 class="main-title">
+          {{TITLE_LINE_1}}
+          <span class="accent-text">{{TITLE_LINE_2}}</span>
+        </h1>
+        <p class="editorial-lead">
+          {{EDITORIAL_LEAD}}
+        </p>
+      </header>
+    </div>
+
+    <!-- Master Body Grid -->
+    <main class="master-body-grid">
+      <!-- Left Column: 3 Architectural Pillars -->
+      <div class="pillars-stack">
+        <div class="pillar-card">
+          <div class="pillar-header">
+            <span class="pillar-tag">{{PILLAR_1_TAG}}</span>
+            <span class="pillar-title">{{PILLAR_1_TITLE}}</span>
+          </div>
+          <div class="pillar-desc">{{PILLAR_1_DESC}}</div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-header">
+            <span class="pillar-tag">{{PILLAR_2_TAG}}</span>
+            <span class="pillar-title">{{PILLAR_2_TITLE}}</span>
+          </div>
+          <div class="pillar-desc">{{PILLAR_2_DESC}}</div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-header">
+            <span class="pillar-tag">{{PILLAR_3_TAG}}</span>
+            <span class="pillar-title">{{PILLAR_3_TITLE}}</span>
+          </div>
+          <div class="pillar-desc">{{PILLAR_3_DESC}}</div>
+        </div>
+      </div>
+
+      <!-- Right Column: 3D Artwork -->
+      <div class="hero-display-area">
+        <div class="refractive-halo"></div>
+        <div class="base-optical-pool"></div>
+        <img class="artwork-img" src="{{HERO_ARTWORK_PATH}}" alt="Hero Artwork">
+        <div class="light-wrap-overlay"></div>
+      </div>
+    </main>
+
+    <!-- Bottom Footer Section -->
+    <footer class="footer-section">
+      <div class="author-block">
+        <div class="avatar-frame">
+          <img src="{{AVATAR_IMAGE_PATH}}" alt="{{AUTHOR_NAME}}">
+        </div>
+        <div class="author-info">
+          <div class="author-name-wrap">
+            <span class="name">{{AUTHOR_NAME}}</span>
+            <span class="verified-badge">✓</span>
+          </div>
+          <span class="role-desc">{{AUTHOR_TAGLINE}}</span>
+        </div>
+      </div>
+
+      <div class="brand-block">
+        <div class="domain">{{BRAND_DOMAIN_PREFIX}}<span>{{BRAND_DOMAIN_SUFFIX}}</span></div>
+        <div class="slogan">{{BRAND_SLOGAN}}</div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

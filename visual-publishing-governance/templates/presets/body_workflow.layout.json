@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "preset_id": "body_workflow_1440x1920",
+  "status": "approved",
+  "canvas": {
+    "width": 1440,
+    "height": 1920
+  },
+  "default_tolerance_px": 12,
+  "allow_extra_elements": false,
+  "elements": [
+    {
+      "id": "page-header",
+      "box": [120, 140, 1200, 160]
+    },
+    {
+      "id": "step-1",
+      "box": [120, 340, 1200, 260]
+    },
+    {
+      "id": "step-2",
+      "box": [120, 640, 1200, 260]
+    },
+    {
+      "id": "step-3",
+      "box": [120, 940, 1200, 260]
+    },
+    {
+      "id": "step-4",
+      "box": [120, 1240, 1200, 260]
+    },
+    {
+      "id": "takeaway-banner",
+      "box": [120, 1540, 1200, 200]
+    },
+    {
+      "id": "footer-signature",
+      "box": [120, 1780, 1200, 80]
+    }
+  ]
+}

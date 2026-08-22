@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "preset_id": "tail_qr_cta_1440x1920",
+  "status": "approved",
+  "canvas": {
+    "width": 1440,
+    "height": 1920
+  },
+  "default_tolerance_px": 12,
+  "allow_extra_elements": false,
+  "elements": [
+    {
+      "id": "page-header",
+      "box": [120, 140, 1200, 160]
+    },
+    {
+      "id": "summary-card",
+      "box": [120, 340, 1200, 480]
+    },
+    {
+      "id": "cta-banner",
+      "box": [120, 860, 1200, 180]
+    },
+    {
+      "id": "qr-slot",
+      "box": [220, 1100, 440, 440]
+    },
+    {
+      "id": "author-info-card",
+      "box": [700, 1100, 520, 440]
+    },
+    {
+      "id": "footer-signature",
+      "box": [120, 1680, 1200, 100]
+    }
+  ]
+}

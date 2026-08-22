@@ -1,5 +1,15 @@
 # Author-Skills 版本演进记录 (CHANGELOG)
 
+## [0.4.0] - 2026-08-23
+
+### 双轨制预置模板与视觉发布治理 (Dual-Track Visual Publishing Governance)
+- **新增 `visual-publishing-governance`**：支持 `produce`（内置黄金版式免参考图）、`lock`（参考图锁版定制）与 `audit`（布局漂移与交付审计）三大模式；
+- **全站 7 大专栏视觉矩阵**：沉淀 [`references/category_theme_matrix.md`](../visual-publishing-governance/references/category_theme_matrix.md)，为 `aooby.cn` 涵盖的 AI Agent 元治理、Vibe Coding、作品与成果展示、产品经理、设计系统、教材授课、极速入门 7 大维度注入专属 Design Tokens、排版骨架与 3D 插画 Prompt；
+- **内置版式预置库**：新增 `cover_hero`、`body_matrix`、`body_workflow` 与 `tail_qr_cta` 等经过几何验证的 1440×1920 标准版式；
+- **资产角色门禁**：原生支持 `avatar`（头像保留）、`qr-code`（二维码插槽）、`brand-logo`，默认对 `identity-info` 强制 `embed: false` 拦截，将平台自动水印标记为排除证据；
+- **确定性稳定套件**：升级 `validate_visual_job.py`、`compare_layout.py` 与 `audit_outputs.py`；
+- **回归自测**：`self_test.py` 覆盖预置模板任务、二维码插槽、布局容差、素材漏分类、未批准合同、身份截图误嵌、旧稿污染与禁用水印等 10 大场景，100% 通过。
+
 ## [0.3.2] - 2026-08-22
 
 ### 全量技能静态审计与上下文指针加固 (Skill Audit & Context Pointer Hardening)

@@ -35,6 +35,7 @@ flowchart TD
 | **project-guard** | **项目守护与规则进化** | 项目生命周期守护。三大 SOP：(1) 新项目 `init` 植入规范（`AGENTS.md` + `DESIGN.md` + `CLAUDE.md`）；(2) 架构腐烂/写丑时 `doctor` 自动重构与自愈；(3) 用户纠偏时 `evolve` 自动进化规则。 | [图解与实战 ↗](https://www.aooby.cn/) |
 | **workspace-lifecycle-governance** | **跨工作区流转决策** | 跨工作区生命周期路由与决策引擎。灵感总控中枢（Idea Hub）跨区自动派发闭环、知识缺口自感知登记、新项目 vs 存量扩展阶梯决策、权威记忆同步。 | [图解与实战 ↗](https://www.aooby.cn/) |
 | **my-memories** | **权威记忆查询接口** | 权威稳定知识库（`MY_Memories`）的画像、工作偏好、协作边界、架构规范查询接口。 | [图解与实战 ↗](https://www.aooby.cn/) |
+| **visual-publishing-governance** | **参考图锁版与视觉发布治理** | 将参考图转换为可检查的构图合同，区分头像、身份截图、内容与水印样本，稳定产出封面、系列长图与短文案，并审计布局漂移和最终文件清单。 | [图解与实战 ↗](https://www.aooby.cn/) |
 
 ---
 
@@ -45,7 +46,8 @@ flowchart TD
 2. **Frontmatter 严谨**：`description` 前置 Leading Words，明确正交分支，杜绝隐私泄漏；
 3. **完成标准明确 (Completion Criteria)**：每个 SOP 结尾必须有可客观检验的完成度（Checkable Bounds），防止早退；
 4. **正面引导 (Positive Prompting)**：使用目标肯定行为定义，减少单纯否定句式；
-5. **编码与跨平台防御**：所有文件统一使用 UTF-8 without BOM，CLI 脚本内置 Windows 控制台弹性编码防御。
+5. **参考锁版与资产分工**：视觉发布先建立构图合同和素材角色，再使用确定性布局层合成；图片生成仅承担独立插画资产，避免整张海报随机漂移；
+6. **编码与跨平台防御**：所有文件统一使用 UTF-8 without BOM，CLI 脚本内置 Windows 控制台弹性编码防御。
 
 ---
 
