@@ -6,7 +6,8 @@
 
 个人原创与深度定制的 AI Agent 技能（Skills）源头仓库。所有技能遵循 [writing-for-agents](https://github.com/SilasFu/Author-Skills) 规范编写，专注于工作区生态的**机制建立、自我修正与规则自进化**（元治理母体引擎），支持通过 `skills-manager` 或 `npx` 一键安装分发至 Antigravity、Codex、Claude Code、Cursor 等多 Agent 环境。
 
-> 🌐 **图解与实战**：每个 Skill 的设计理念、原理图解与实战案例，参见个人主站：[https://www.aooby.cn/](https://www.aooby.cn/)
+> 🌐 **图解与实战**：每个 Skill 的设计理念、原理图解与实战案例，参见个人主站：[https://www.aooby.cn/](https://www.aooby.cn/)  
+> 🔰 **新手小白入门教材**：零基础通俗教程与复制即用 Prompt 详见 [新手极速入门指南 (docs/BEGINNER_GUIDE.md)](docs/BEGINNER_GUIDE.md)。
 
 ---
 

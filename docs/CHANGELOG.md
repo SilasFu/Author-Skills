@@ -5,7 +5,8 @@
 ### 全量技能静态审计与上下文指针加固 (Skill Audit & Context Pointer Hardening)
 - **渐进披露指针闭环**：在 `workspace-bootstrap`、`project-guard` 与 `workspace-lifecycle-governance` 的 `SKILL.md` 中补齐对 `topology_spec.md`、`state_matrix.md` 与 `dispatch_task.template.md` 的显式指针；
 - **零硬编码彻底清理**：消除 `rule_taxonomy.md` 中的残留绝对路径，全系规则 100% 实现 `$MY_MEMORIES_PATH` 与相对路径自感知；
-- **全脚本静态与运行自检**：全量 11 个 Python 脚本通过 `--help` 与全场景运行测试，`project-guard doctor` 审计全部 PASS。
+- **全脚本静态与运行自检**：全量 11 个 Python 脚本通过 `--help` 与全场景运行测试，`project-guard doctor` 审计全部 PASS；
+- **新增新手极速入门教程**：沉淀 [`docs/BEGINNER_GUIDE.md`](BEGINNER_GUIDE.md)，为零基础与小白用户提供通俗比喻、0 到 1 实战路径与开箱即用提词速查表。
 
 ---
 
