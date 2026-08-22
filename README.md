@@ -1,4 +1,4 @@
-# Author-Skills (自研 Agent 技能母体仓库)
+﻿# Author-Skills (自研 Agent 技能母体仓库)
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Usage: Non-Commercial](https://img.shields.io/badge/Usage-Non--Commercial%20Only-orange.svg)](LICENSE)
@@ -14,10 +14,10 @@
 
 ```mermaid
 flowchart TD
-    A["<b>1. 源头自研仓库</b> (<code>D:\Vibe_Coding\Author-Skills</code>)<br/>• 手工编写、规范校验、纯净 Skill 源码"]
+    A["<b>1. 源头自研仓库</b> (<code>D:\Vibe_Coding\Author-Skills</code>)<br/>👉 手工编写、规范校验、纯净 Skill 源码"]
     B["<b>2. GitHub 远程仓库</b> (<code>SilasFu/Author-Skills</code>)"]
-    C["<b>3. skills-manager / npx 分发</b> (<code>~/.skills-manager</code>)<br/>• 一键分发至各 Agent (Antigravity, Codex, Claude Code, Cursor)"]
-    D["🌐 <b>个人主页 / 博客</b> (<code>www.aooby.cn</code>)<br/>• Skill 图解介绍、实战案例展示"]
+    C["<b>3. skills-manager / npx 分发</b> (<code>~/.skills-manager</code>)<br/>👉 一键分发至各 Agent (Antigravity, Codex, Claude Code, Cursor)"]
+    D["🌐 <b>个人主页 / 博客</b> (<code>www.aooby.cn</code>)<br/>👉 Skill 图解介绍、实战案例展示"]
 
     A -->|git push| B
     B -->|一键分发安装| C
@@ -30,9 +30,9 @@ flowchart TD
 
 | 技能名称 | 核心职责 | 适用场景与触发方式 | 详细图解 |
 | :--- | :--- | :--- | :--- |
-| **workspace-bootstrap** | **全生态冷启动自举** | 全生态冷启动与跨设备一键拉通。交互式引导绑定私有库、生成相对拓扑、消除盘符硬编码、多 Agent 规则自动挂载。 | [图解与实战 ↗](https://www.aooby.cn/) |
+| **workspace-bootstrap** | **全生态冷启动自举** | 全生态冷启动与跨设备一键拉通。交互式引导绑定 6 大工作区私有库、生成相对拓扑、消除盘符硬编码、多 Agent 规则自动挂载。 | [图解与实战 ↗](https://www.aooby.cn/) |
 | **project-guard** | **项目守护与规则进化** | 项目生命周期守护。三大 SOP：(1) 新项目 `init` 植入规范；(2) 架构腐烂/写丑时 `doctor` 自动重构与自愈；(3) 用户纠偏时 `evolve` 自动进化规则。 | [图解与实战 ↗](https://www.aooby.cn/) |
-| **workspace-lifecycle-governance** | **跨工作区流转决策** | 跨工作区生命周期路由与决策引擎。知识缺口自感知登记、新项目 vs 存量扩展阶梯决策、权威记忆同步。 | [图解与实战 ↗](https://www.aooby.cn/) |
+| **workspace-lifecycle-governance** | **跨工作区流转决策** | 跨工作区生命周期路由与决策引擎。灵感总控中枢（Idea Hub）跨区自动派发闭环、知识缺口自感知登记、新项目 vs 存量扩展阶梯决策、权威记忆同步。 | [图解与实战 ↗](https://www.aooby.cn/) |
 | **my-memories** | **权威记忆查询接口** | 权威稳定知识库（`MY_Memories`）的画像、工作偏好、协作边界、架构规范查询接口。 | [图解与实战 ↗](https://www.aooby.cn/) |
 
 ---
