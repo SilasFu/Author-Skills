@@ -1,18 +1,19 @@
 # Author-Skills 技术架构与流通拓扑 (ARCHITECTURE)
 
-## 1. 架构拓扑与五大工作区协同
+## 1. 架构拓扑与六大工作区协同
 
-`Author-Skills` 作为中枢母体，与其余四大工作区形成如下拓扑闭环：
+`Author-Skills` 作为中枢母体，与其余五大工作区形成如下拓扑闭环：
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                             五大工作区生态拓扑                              │
+│                             六大工作区生态拓扑                              │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│ 1. Memory Bank (记忆大脑)      ── D:\MY_Memories (权威知识、决策偏好、治理规则) │
-│ 2. Project Bank (自建代码)     ── D:\Vibe_Coding (生产项目、AGENTS.md 契约)     │
-│ 3. Learning Bank (知识学习)    ── D:\My_Learning (技术研究、缺口登记与实验)   │
-│ 4. Reference Bank (只读参考)   ── D:\Reference_Coding (第三方开源只读学习)     │
-│ 5. Author-Skills (自研技能母体)── D:\Vibe_Coding\Author-Skills (元治理技能源头)│
+│ 1. Idea Hub (灵感中枢)         ── D:\Idea_Hub (碎片需求收集、3 级流转与派发)    │
+│ 2. Memory Bank (记忆大脑)      ── D:\MY_Memories (权威知识、决策偏好、治理规则) │
+│ 3. Project Bank (自建代码)     ── D:\Vibe_Coding (生产项目、AGENTS.md 契约)     │
+│ 4. Learning Bank (知识学习)    ── D:\My_Learning (技术研究、缺口登记与实验)   │
+│ 5. Reference Bank (只读参考)   ── D:\Reference_Coding (第三方开源只读学习)     │
+│ 6. Author-Skills (自研技能母体)── D:\Vibe_Coding\Author-Skills (元治理技能源头)│
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 

@@ -16,11 +16,11 @@ Universal active guardian, diagnostic doctor, and rule self-evolution engine for
 
 ## 核心模式与触发指令
 
-| 模式 | 用户典型触发词 | 核心使命 |
+| 模式 | 用户典型触发词 | 核心使命与底层工具支撑 |
 | :--- | :--- | :--- |
-| **init (机制植入)** | “帮这个项目初始化规范”、“植入质量机制”、“/project-guard init” | 探测技术栈，自动生成项目级 `AGENTS.md`，绑定单一 `DESIGN.md` 设计契约，固化单文件 200 行限制与编译器硬门禁。 |
-| **doctor (健康体检与自愈)** | “跑一下项目体检”、“检查代码行数与规范”、“清理野样式和暗状态”、“/project-guard doctor” | 扫描 >200 行超长文件并垂直切片拆分、扫描硬编码野样式、清理工具黑盒暗状态、执行 0 报错编译器自检。 |
-| **evolve (规则进化与生态免疫)** | “以后不要这样做了”、“记住这个习惯/偏好”、“把这个教训沉淀进规则”、“/project-guard evolve” | 自动捕获负向偏好或新原则，原子化提取后回写进 `MY_Memories` 或项目 `AGENTS.md`，Git 固化实现全设备永久免疫。 |
+| **init (机制植入)** | “帮这个项目初始化规范”、“植入质量机制”、“/project-guard init” | 基于 `templates/AGENTS.template.md` 与 `templates/DESIGN.template.md`，参数化注入生成项目级规范与门禁。 |
+| **doctor (健康体检与自愈)** | “跑一下项目体检”、“检查代码行数与规范”、“清理野样式和暗状态”、“/project-guard doctor” | 运行 `scripts/doctor.py` 进行毫秒级确定性全维度体检，自动执行大文件垂直切片与野样式收敛。 |
+| **evolve (规则进化与生态免疫)** | “以后不要这样做了”、“记住这个习惯/偏好”、“把这个教训沉淀进规则”、“/project-guard evolve” | 依据 `references/rule_taxonomy.md` 提取原子化硬规则，精准路由回写权威源并 Git 固化，实现全生态永久免疫。 |
 
 ---
 
@@ -28,61 +28,59 @@ Universal active guardian, diagnostic doctor, and rule self-evolution engine for
 
 当在任意新项目或未受控项目中执行 `/project-guard init` 时：
 
-### 1. 技术栈与环境自动探测
-- **构建与包管理**：`pnpm-lock.yaml` (pnpm), `package-lock.json` (npm), `yarn.lock` (yarn), `Cargo.toml` (cargo), `pyproject.toml` (uv/poetry/pip), `go.mod` (go)；
-- **UI 与框架体系**：React, Next.js, Vue, Tailwind, shadcn/ui, Radix 等；
-- **编译与校验命令**：`typecheck`, `build`, `lint`, `test`。
+### 1. 技术栈与构建环境自动探测
+- 检查构建工具与包管理器：`pnpm` (`pnpm-lock.yaml`), `npm` (`package-lock.json`), `yarn` (`yarn.lock`), `cargo` (`Cargo.toml`), `poetry/pip` (`pyproject.toml`), `go` (`go.mod`)；
+- 探测检验命令：`typecheck` / `lint` / `test` / `check`。
 
-### 2. 自动生成/补齐项目级 `AGENTS.md`
-在项目根目录生成专属于该项目的 `AGENTS.md` 刚性约束：
-- **单文件行数硬限制**：所有业务与 UI 单文件严格不超过 **200 行**；超过必须按三层架构切分（UI 组件 `Component.tsx`、业务逻辑 `useComponent.ts`、类型契约 `types.ts`）；
-- **编译器硬门禁**：完成代码编写后，必须自动运行原生编译检查（如 `pnpm typecheck` / `cargo check`），0 报错才准交工；
-- **零黑盒私有记忆**：严禁将项目逻辑存入工具私有 Memory，一切上下文以项目文件为准；
-- **视觉先行与防跑偏**：涉及新界面时，必须优先确认 `DESIGN.md` 与状态矩阵（8 大状态），严禁凭空发挥。
+### 2. 参数化生成项目级 `AGENTS.md`
+- 读取本技能内置的 [`templates/AGENTS.template.md`](templates/AGENTS.template.md)；
+- 替换 `{{PROJECT_NAME}}`、`{{TECH_STACK}}`、`{{CHECK_COMMAND}}` 等插槽并落盘至项目根目录；
+- 固化 **业务单文件 ≤ 200 行** 硬限制与 **0 报错编译器自检** 门禁。
 
-### 3. 探测与绑定单一设计系统契约（Single DESIGN.md SSOT）
-- **探测已有规范**：优先检查 `docs/DESIGN.md` ➔ `DESIGN.md` ➔ 现有全局样式；
-- **若已存在设计文件**：**绝对禁止覆盖或创建第二份副本**，将其作为全项目唯一视觉真实源，仅补齐 Do/Don't 与语义 Token 映射；
-- **若完全不存在**：生成标准 `DESIGN.md`，固化灰阶中性基调、8px 节奏与去卡片化原则。
+### 3. 探测与绑定单一设计契约（Single DESIGN.md SSOT）
+- 优先探测项目是否已有设计规范（`docs/DESIGN.md` 或 `DESIGN.md`）；
+- **若已存在**：将其作为唯一视觉源，严禁覆盖或重复创建；
+- **若不存在**：读取 [`templates/DESIGN.template.md`](templates/DESIGN.template.md)，参考 [`references/state_matrix.md`](references/state_matrix.md) 生成标准中性设计系统与 8 大交互状态规范。
 
-**完成标准 (Completion Criterion)**：根目录存在 `AGENTS.md`，存在且仅存在 1 份 `DESIGN.md`，编译器自检命令验证通过。
+### 4. 生成多 Agent 规则桥接契约（CLAUDE.md SSOT Pointer）
+- 读取 [`templates/CLAUDE.template.md`](templates/CLAUDE.template.md)；
+- 替换插槽并落盘至根目录 `CLAUDE.md`，使 Claude Code / Cursor / Antigravity 实现无缝统一规则驱动。
+
+### 5. 注入自包含工程文档矩阵骨架 (Self-Contained Docs Matrix)
+- 依据 [`templates/docs_prd.template.md`](templates/docs_prd.template.md)、[`templates/docs_architecture.template.md`](templates/docs_architecture.template.md)、[`templates/docs_decisions.template.md`](templates/docs_decisions.template.md)；
+- 在 `<ProjectRoot>/docs/` 目录下生成 `PRD.md`、`ARCHITECTURE.md` 与 `DECISIONS.md` 初始骨架，确保项目上下文 100% 自足。
+
+**完成标准 (Completion Criterion)**：根目录存在 `AGENTS.md` 与 `CLAUDE.md`，存在且仅存在 1 份 `DESIGN.md`，`docs/` 自包含文档矩阵就绪，编译器自检命令验证通过。
 
 ---
 
 ## 模式二：doctor（项目健康诊断、防腐与自愈 SOP）
 
-当执行 `/project-guard doctor` 时，自动执行全维度体检并自愈：
+当执行 `/project-guard doctor` 时：
 
-### 1. 巨石代码体检与垂直切片自愈 (Modularity & Size Audit)
-- 扫描项目源码（排除 `node_modules`, `dist`, `.git`, `build`）；
-- 检出所有超过 **200 行** 的大文件；
-- **自动自愈动作**：按“视图层 (UI)、状态与副作用 (Hook/Service)、数据结构 (Types)”进行垂直切片重构，生成独立小文件。
-
-### 2. 设计规范漂移与野样式体检 (Design Drift Audit)
-- 扫描组件中手写的十六进制色值（如 `#1e1e24`, `rgba(...)`）及未受控的内联样式；
-- **自动自愈动作**：批量修正为 `DESIGN.md` 中定义的语义 Token 类（如 `bg-background`, `text-muted-foreground`）。
-
-### 3. 工具私有黑盒暗状态体检 (Anti-Blackbox Audit)
-- 检查是否存在未提交的私有缓存、私有对话摘要或外部不可追溯的状态；
-- 确保所有项目上下文 100% 存在于当前 Git 仓库中。
-
-### 4. 0 报错编译器自检 (Zero-Error Verification)
-- 自动执行项目编译与类型检查命令；
-- 若出现报错，自动捕获编译器错误堆栈并循环修复，直至 0 报错。
-
-### 5. 输出健康卡片 (Health Card)
-```text
-┌─────────────────────────────────────────────────────────────┐
-│ Project Guard Doctor Report                                 │
-├──────────────────────────────┬──────────────────────────────┤
-│ • 单文件健康度 (≤ 200 lines)  │ 100% PASS (已垂直切片 1 文件)│
-│ • 设计 Token 遵从度          │ 100% PASS (已纠正 2 处野样式)│
-│ • 黑盒暗状态检查             │ 0 违规 (Pure File-based SSOT)│
-│ • 编译器自检                 │ 0 Errors (PASS)              │
-└──────────────────────────────┴──────────────────────────────┘
+### 1. 运行确定性体检脚本套件
+执行内置的确定性诊断编排脚本：
+```bash
+python <path-to-skill>/scripts/doctor.py --path .
 ```
+脚本将以毫秒级精度并发完成以下 4 项诊断：
+1. **代码巨石扫描 (`audit_sprawl.py`)**：列出所有超过 **200 行** 的源码文件；
+2. **设计漂移扫描 (`audit_design_drift.py`)**：检出手写十六进制色值（`#...`）与未经受控的内联样式；
+3. **黑盒暗状态检查**：排查未提交的私有缓存与黑盒记忆文件；
+4. **编译器/类型自检**：执行原生构建与类型检查。
 
-**完成标准 (Completion Criterion)**：完成 4 大体检项，自动修复落地，编译器命令退出码为 0，向用户呈现结构化健康卡片。
+### 2. 自动化垂直切片与防腐自愈
+- **针对超标大文件（>200 行）**：
+  - 强制执行三层切片重构：UI 渲染层 (`Component.tsx`)、业务与副作用层 (`useComponent.ts`)、类型契约层 (`types.ts`)；
+- **针对野样式与硬编码颜色**：
+  - 对照 `DESIGN.md` 语义 Token 批量收敛替换（如 `bg-background`、`text-muted-foreground`）；
+- **针对编译器报错**：
+  - 自动捕获错误堆栈并闭环修复，直至 `python <path-to-skill>/scripts/doctor.py` 退出码为 0。
+
+### 3. 输出结构化健康卡片 (Health Card)
+向用户输出标准卡片，标明所有检查项均通过并列出已自愈的文件清单。
+
+**完成标准 (Completion Criterion)**：运行 `doctor.py` 退出码为 0（所有体检项 100% PASS），向用户呈现结构化健康卡片。
 
 ---
 
@@ -91,19 +89,19 @@ Universal active guardian, diagnostic doctor, and rule self-evolution engine for
 当用户在对话中指出 Agent 的错误（如“不要用弹窗”、“以后这种数据一律用本地缓存”）或表达新偏好时：
 
 ### 1. 提炼原子规则（Atomic Rule Extraction）
-将用户的纠偏或偏好提炼为**不可歧义的正面/负面硬规则**：
-- 规则格式：`【分类】+【触发场景】+【强制执行要求】+【明确禁止项】`。
+查阅 [`references/rule_taxonomy.md`](references/rule_taxonomy.md)，将用户纠偏提炼为标准四要素原子规则：
+`【触发条件】+【强制要求】+【明确禁止】+【验证方式】`。
 
-### 2. 精准回写权威事实源（Single-Truth Revision）
-- 若属于 **个人全局偏好/架构方法论** ➔ 自动回写至 `MY_Memories/knowledge/profile/工作与决策偏好.md`；
-- 若属于 **设计与 UI 禁忌** ➔ 自动回写至当前项目 `DESIGN.md` 的 `## Do's and Don'ts`；
-- 若属于 **代码工程/架构规范** ➔ 自动追加至当前项目 `AGENTS.md` 的 `## 质量与架构禁忌`。
+### 2. 精准路由回写权威事实源（SSOT Routing）
+- **个人全局偏好/交互习惯** ➔ 回写至 `MY_Memories/knowledge/profile/工作与决策偏好.md`；
+- **视觉/UI/交互禁忌** ➔ 追加至当前项目 `DESIGN.md` 的 `## 5. 设计规范禁忌 (Do's and Don'ts)`；
+- **代码质量/架构约束** ➔ 追加至当前项目 `AGENTS.md` 的 `## 3. 质量与架构禁忌`。
 
-### 3. 自动 Git Commit（跨设备生态免疫固化）
-- 自动执行 `git add` 并提交：
-  ```bash
-  git commit -m "chore(governance): evolve rules to permanently immunize against <issue-pattern>"
-  ```
-- **免疫效果**：一旦提交，该规则永久生效。无论未来哪个 Agent（Codex/Kimi/Claude）、在哪个设备接手，都会在第一行读取到该规则，**实现全生命周期同一错误绝对不再犯**！
+### 3. 自动 Git 固化（跨设备全生态永久免疫）
+自动执行 Git 提交：
+```bash
+git commit -m "chore(governance): evolve rules to permanently immunize against <pattern>"
+```
+**免疫效果**：规则一经提交，全生态所有接入该仓库的 Agent（Cursor/Claude/Antigravity）在下一轮任务均自动受控，**实现同一错误全生命周期绝对不再犯**！
 
-**完成标准 (Completion Criterion)**：新规则已精准写入对应权威文件，Git 提交完成，向用户输出免疫确认卡片。
+**完成标准 (Completion Criterion)**：新规则已精准写入权威文件，Git 提交完成，向用户输出免疫确认卡片。
